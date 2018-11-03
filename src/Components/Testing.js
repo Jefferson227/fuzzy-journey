@@ -1,16 +1,18 @@
 import React from 'react';
-import { Field, Label, Input, Control, Button } from 'bloomer';
+import { Field, Label, Input, Control, Button, Container } from 'bloomer';
 
 const Testing = () => {
   return (
     <div>
-      <Field>
-        <Label>Name</Label>
-        <Control>
-          <Input type="text" isColor="success" placeholder="Text input" />
-        </Control>
-      </Field>
-      <Button isColor="info">Button</Button>
+      <Container style={{ padding: 10 }}>
+        <Field>
+          <Label>Name</Label>
+          <Control>
+            <Input type="text" isColor="success" placeholder="Text input" />
+          </Control>
+        </Field>
+        <Button isColor="info">Button</Button>
+      </Container>
     </div>
   );
 };
