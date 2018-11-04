@@ -33,7 +33,7 @@ export default class Estoque extends React.Component {
               <Input type="text" isColor="success" placeholder="Digite o nome do produto" />
             </Control>
           </Field>
-          { this.state.products.map(product => <Box>{ product.productName }</Box>) }
+          { this.state.products.map((product, index) => <Box key={index}>{ product.productName }</Box>) }
         </Container>
         <FloatingButton />
       </div>
