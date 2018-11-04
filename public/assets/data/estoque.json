@@ -1,52 +1,50 @@
-{
-  "products": [
-    {
-      "productName": "Açúcar Mascavo",
-      "unitOfMeasurement": "g",
-      "packageContent": 1000,
-      "unitPrice": 5.00,
-      "pricePerUnitOfMeasurement": 5.00,
-      "quantity": 2
-    },
-    {
-      "productName": "Margarina Medalha de Ouro 3kg",
-      "unitOfMeasurement": "g",
-      "packageContent": 500,
-      "unitPrice": 22.26,
-      "pricePerUnitOfMeasurement": 44.52,
-      "quantity": 12
-    },
-    {
-      "productName": "Cerejas ao Marasquinho",
-      "unitOfMeasurement": "g",
-      "packageContent": 500,
-      "unitPrice": 24.21,
-      "pricePerUnitOfMeasurement": 48.42,
-      "quantity": 12
-    },
-    {
-      "productName": "Chocolate ao Leite Melken",
-      "unitOfMeasurement": "g",
-      "packageContent": 1050,
-      "unitPrice": 28.33,
-      "pricePerUnitOfMeasurement": 26.98,
-      "quantity": 12
-    },
-    {
-      "productName": "Leite Condensado Moça",
-      "unitOfMeasurement": "g",
-      "packageContent": 395,
-      "unitPrice": 4.95,
-      "pricePerUnitOfMeasurement": 12.53,
-      "quantity": 12
-    },
-    {
-      "productName": "Kit Kat",
-      "unitOfMeasurement": "unid.",
-      "packageContent": 24,
-      "unitPrice": 41.52,
-      "pricePerUnitOfMeasurement": 1.73,
-      "quantity": 12
-    }
-  ]
-}
+[ 
+  {
+    "productName": "Açúcar Mascavo",
+    "unitOfMeasurement": "g",
+    "packageContent": 1000,
+    "unitPrice": 5.00,
+    "pricePerUnitOfMeasurement": 5.00,
+    "quantity": 2
+  },
+  {
+    "productName": "Margarina Medalha de Ouro 3kg",
+    "unitOfMeasurement": "g",
+    "packageContent": 500,
+    "unitPrice": 22.26,
+    "pricePerUnitOfMeasurement": 44.52,
+    "quantity": 12
+  },
+  {
+    "productName": "Cerejas ao Marasquinho",
+    "unitOfMeasurement": "g",
+    "packageContent": 500,
+    "unitPrice": 24.21,
+    "pricePerUnitOfMeasurement": 48.42,
+    "quantity": 12
+  },
+  {
+    "productName": "Chocolate ao Leite Melken",
+    "unitOfMeasurement": "g",
+    "packageContent": 1050,
+    "unitPrice": 28.33,
+    "pricePerUnitOfMeasurement": 26.98,
+    "quantity": 12
+  },
+  {
+    "productName": "Leite Condensado Moça",
+    "unitOfMeasurement": "g",
+    "packageContent": 395,
+    "unitPrice": 4.95,
+    "pricePerUnitOfMeasurement": 12.53,
+    "quantity": 12
+  },
+  {
+    "productName": "Kit Kat",
+    "unitOfMeasurement": "unid.",
+    "packageContent": 24,
+    "unitPrice": 41.52,
+    "pricePerUnitOfMeasurement": 1.73,
+    "quantity": 12
+  }
+]
