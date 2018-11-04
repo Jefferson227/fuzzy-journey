@@ -1,9 +1,11 @@
 import React from 'react';
 import { Field, Input, Control, Container, Box } from 'bloomer';
+import Header from '../Components/Header/Header';
 
 const Estoque = () => {
   return (
     <div>
+      <Header />
       <Container style={{ padding: 10 }}>
         <Field>
           <Control>
