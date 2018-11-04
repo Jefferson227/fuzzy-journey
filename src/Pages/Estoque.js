@@ -2,7 +2,6 @@ import React from 'react';
 import { Field, Input, Control, Container, Box } from 'bloomer';
 import Header from '../Components/Header/Header';
 import FloatingButton from '../Components/FloatingButton/FloatingButton';
-// import axios from 'axios';
 
 export default class Estoque extends React.Component {
   constructor(props){
