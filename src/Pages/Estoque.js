@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, Input, Control, Container, Box } from 'bloomer';
 import Header from '../Components/Header/Header';
+import FloatingButton from '../Components/FloatingButton/FloatingButton';
 
 const Estoque = () => {
   return (
@@ -18,6 +19,7 @@ const Estoque = () => {
         <Box>Item 4</Box>
         <Box>Item 5</Box>
       </Container>
+      <FloatingButton />
     </div>
   );
 };
