@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, Input, Control, Container, Box, Label } from 'bloomer';
+import { Field, Input, Control, Container, Box, Label, Button, Column, Columns } from 'bloomer';
 import Header from '../Components/Header/Header';
 import FloatingButton from '../Components/FloatingButton/FloatingButton';
 
@@ -14,6 +14,7 @@ export default class Estoque extends React.Component {
 
     this.searchProductHandler = this.searchProductHandler.bind(this);
     this.addNewProductHandler = this.addNewProductHandler.bind(this);
+    this.enableViewModeHandler = this.enableViewModeHandler.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +40,10 @@ export default class Estoque extends React.Component {
 
   addNewProductHandler() {
     this.setState({ mode: 'add' });
+  }
+
+  enableViewModeHandler() {
+    this.setState({ mode: 'view' });
   }
 
   render() {
@@ -125,6 +130,15 @@ export default class Estoque extends React.Component {
                   placeholder="10" />
               </Control>
             </Field>
+            <Columns>
+              <Column hasTextAlign="centered">
+                <Button
+                  isColor="info"
+                  style={{ marginRight: 5 }}
+                  onClick={this.enableViewModeHandler}>Adicionar</Button>
+                <Button isColor="warning">Limpar</Button>
+              </Column>
+            </Columns>
           </Container>
         </div>
       );
