@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, Input, Control, Container, Box } from 'bloomer';
+import { Field, Input, Control, Container, Box, Label } from 'bloomer';
 import Header from '../Components/Header/Header';
 import FloatingButton from '../Components/FloatingButton/FloatingButton';
 
@@ -8,10 +8,12 @@ export default class Estoque extends React.Component {
     super(props);
 
     this.state = {
-      products: []
+      products: [],
+      mode: 'view'
     };
 
     this.searchProductHandler = this.searchProductHandler.bind(this);
+    this.addNewProductHandler = this.addNewProductHandler.bind(this);
   }
 
   componentDidMount() {
@@ -35,24 +37,98 @@ export default class Estoque extends React.Component {
       });
   }
 
+  addNewProductHandler() {
+    console.log('clicked on add');
+    this.setState({ mode: 'add' });
+  }
+
   render() {
-    return (
-      <div>
-        <Header />
-        <Container style={{ padding: 10 }}>
-          <Field>
-            <Control>
-              <Input
-                type="text"
-                isColor="success"
-                placeholder="Digite o nome do produto"
-                onChange={this.searchProductHandler} />
-            </Control>
-          </Field>
-          { this.state.products.map((product, index) => <Box key={index}>{ product.productName }</Box>) }
-        </Container>
-        <FloatingButton />
-      </div>
-    );
+    if (this.state.mode === 'view') {
+      return (
+        <div>
+          <Header />
+          <Container style={{ padding: 10 }}>
+            <Field>
+              <Control>
+                <Input
+                  type="text"
+                  isColor="success"
+                  placeholder="Digite o nome do produto"
+                  onChange={this.searchProductHandler} />
+              </Control>
+            </Field>
+            { this.state.products.map((product, index) => <Box key={index}>{ product.productName }</Box>) }
+          </Container>
+          <FloatingButton onClick={this.addNewProductHandler} />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Header />
+          <Container style={{ padding: 10 }}>
+            <Field>
+              <Control>
+                <Label>Produto</Label>
+                <Input
+                  type="text"
+                  isColor="success"
+                  placeholder="ex. Margarina Medalha de Ouro" />
+              </Control>
+            </Field>
+
+            <Field>
+              <Control>
+                <Label>Embalagem</Label>
+                <Input
+                  type="text"
+                  isColor="success"
+                  placeholder="ex. 1kg" />
+              </Control>
+            </Field>
+
+            <Field>
+              <Control>
+                <Label>Unidade de Medida</Label>
+                <Input
+                  type="text"
+                  isColor="success"
+                  placeholder="g, ml ou unidade" />
+              </Control>
+            </Field>
+
+            <Field>
+              <Control>
+                <Label>Preço Unitário</Label>
+                <Input
+                  type="text"
+                  isColor="success"
+                  placeholder="10,00" />
+              </Control>
+            </Field>
+
+            <Field>
+              <Control>
+                <Label>Preço por Embalagem</Label>
+                <Input
+                  type="text"
+                  isColor="success"
+                  placeholder="10,00" />
+              </Control>
+            </Field>
+
+            <Field>
+              <Control>
+                <Label>Quantidade</Label>
+                <Input
+                  type="text"
+                  isColor="success"
+                  placeholder="10" />
+              </Control>
+            </Field>
+          </Container>
+        </div>
+      );
+    }
   }
 };
