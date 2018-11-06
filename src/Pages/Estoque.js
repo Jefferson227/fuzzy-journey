@@ -59,7 +59,7 @@ export default class Estoque extends React.Component {
             </Field>
             { this.state.products.map((product, index) => <Box key={index}>{ product.productName }</Box>) }
           </Container>
-          <FloatingButton onClick={this.addNewProductHandler} />
+          <FloatingButton addNewProductHandler={this.addNewProductHandler} />
         </div>
       );
     } else {

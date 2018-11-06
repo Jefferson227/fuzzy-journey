@@ -1,9 +1,11 @@
 import React from 'react';
 import './FloatingButton.css';
 
-const FloatingButton = () => {
+const FloatingButton = (props) => {
   return (
-    <div className="FloatingButton">
+    <div
+      className="FloatingButton"
+      onClick={props.addNewProductHandler}>
       <div id="container-floating">
         <div
           id="floating-button"
