@@ -38,7 +38,6 @@ export default class Estoque extends React.Component {
   }
 
   addNewProductHandler() {
-    console.log('clicked on add');
     this.setState({ mode: 'add' });
   }
 
