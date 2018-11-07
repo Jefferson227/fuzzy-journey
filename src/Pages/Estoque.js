@@ -143,6 +143,17 @@ export default class Estoque extends React.Component {
                   placeholder="10" />
               </Control>
             </Field>
+
+            <Field>
+              <Control>
+                <Label>Local</Label>
+                <Input
+                  type="text"
+                  isColor="success"
+                  placeholder="Supermercado Extra" />
+              </Control>
+            </Field>
+
             <Columns>
               <Column hasTextAlign="centered">
                 <Button
