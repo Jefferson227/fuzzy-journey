@@ -92,12 +92,14 @@ export default class Estoque extends React.Component {
             </Field>
 
             <Field>
+              <Label>Unidade de Medida</Label>
               <Control>
-                <Label>Unidade de Medida</Label>
-                <Input
-                  type="text"
-                  isColor="success"
-                  placeholder="g, ml ou unidade" />
+                <Select>
+                  <option>Selecione</option>
+                  <option>g</option>
+                  <option>ml</option>
+                  <option>Unidade</option>
+                </Select>
               </Control>
             </Field>
 
