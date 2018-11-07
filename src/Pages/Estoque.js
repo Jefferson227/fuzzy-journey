@@ -1,7 +1,18 @@
 import React from 'react';
-import { Field, Input, Control, Container, Box, Label, Button, Column, Columns } from 'bloomer';
 import Header from '../Components/Header/Header';
 import FloatingButton from '../Components/FloatingButton/FloatingButton';
+import {
+  Field,
+  Input,
+  Control,
+  Container,
+  Box,
+  Label,
+  Button,
+  Column,
+  Columns,
+  Select
+} from 'bloomer';
 
 export default class Estoque extends React.Component {
   constructor(props){
