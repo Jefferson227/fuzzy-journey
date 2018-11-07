@@ -26,6 +26,7 @@ export default class Estoque extends React.Component {
     this.searchProductHandler = this.searchProductHandler.bind(this);
     this.addNewProductHandler = this.addNewProductHandler.bind(this);
     this.enableViewModeHandler = this.enableViewModeHandler.bind(this);
+    this.enableEditModeHandler = this.enableEditModeHandler.bind(this);
   }
 
   componentDidMount() {
@@ -57,6 +58,10 @@ export default class Estoque extends React.Component {
     this.setState({ mode: 'view' });
   }
 
+  enableEditModeHandler() {
+    this.setState({ mode: 'edit' });
+  }
+
   render() {
     if (this.state.mode === 'view') {
       return (
@@ -72,7 +77,10 @@ export default class Estoque extends React.Component {
                   onChange={this.searchProductHandler} />
               </Control>
             </Field>
-            { this.state.products.map((product, index) => <Box key={index}>{ product.productName }</Box>) }
+            { this.state.products.map((product, index) =>
+              <Box
+                onClick={this.enableEditModeHandler}
+                key={index}>{ product.productName }</Box>) }
           </Container>
           <FloatingButton addNewProductHandler={this.addNewProductHandler} />
         </div>
@@ -159,8 +167,10 @@ export default class Estoque extends React.Component {
                 <Button
                   isColor="info"
                   style={{ marginRight: 5 }}
-                  onClick={this.enableViewModeHandler}>Adicionar</Button>
-                <Button isColor="warning">Limpar</Button>
+                  onClick={this.enableViewModeHandler}>{this.state.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
+                <Button
+                  isColor="warning"
+                  isActive={this.state.mode === 'add'}>Limpar</Button>
               </Column>
             </Columns>
           </Container>
