@@ -5,7 +5,8 @@
     "packageContent": 1000,
     "unitPrice": 5.00,
     "pricePerUnitOfMeasurement": 5.00,
-    "quantity": 2
+    "quantity": 2,
+    "sellingPoint": "Fortali"
   },
   {
     "productName": "Margarina Medalha de Ouro 3kg",
@@ -13,7 +14,8 @@
     "packageContent": 500,
     "unitPrice": 22.26,
     "pricePerUnitOfMeasurement": 44.52,
-    "quantity": 12
+    "quantity": 12,
+    "sellingPoint": "Fortali"
   },
   {
     "productName": "Cerejas ao Marasquinho",
@@ -21,7 +23,8 @@
     "packageContent": 500,
     "unitPrice": 24.21,
     "pricePerUnitOfMeasurement": 48.42,
-    "quantity": 12
+    "quantity": 12,
+    "sellingPoint": "Fortali"
   },
   {
     "productName": "Chocolate ao Leite Melken",
@@ -29,22 +32,25 @@
     "packageContent": 1050,
     "unitPrice": 28.33,
     "pricePerUnitOfMeasurement": 26.98,
-    "quantity": 12
+    "quantity": 12,
+    "sellingPoint": "Fortali"
   },
   {
-    "productName": "Leite Condensado Moça",
-    "unitOfMeasurement": "g",
-    "packageContent": 395,
+    "productName": "Leite Integral",
+    "unitOfMeasurement": "ml",
+    "packageContent": 1000,
     "unitPrice": 4.95,
-    "pricePerUnitOfMeasurement": 12.53,
-    "quantity": 12
+    "pricePerUnitOfMeasurement": 4.95,
+    "quantity": 12,
+    "sellingPoint": "Fortali"
   },
   {
     "productName": "Kit Kat",
-    "unitOfMeasurement": "unid.",
+    "unitOfMeasurement": "unidade",
     "packageContent": 24,
     "unitPrice": 41.52,
     "pricePerUnitOfMeasurement": 1.73,
-    "quantity": 12
+    "quantity": 12,
+    "sellingPoint": "Fortali"
   }
 ]
