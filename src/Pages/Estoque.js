@@ -105,6 +105,7 @@ export default class Estoque extends React.Component {
                 <Input
                   type="text"
                   isColor="success"
+                  defaultValue={this.state.productToEdit.productName}
                   placeholder="ex. Margarina Medalha de Ouro" />
               </Control>
             </Field>
@@ -115,6 +116,7 @@ export default class Estoque extends React.Component {
                 <Input
                   type="text"
                   isColor="success"
+                  defaultValue={this.state.productToEdit.packageContent}
                   placeholder="ex. 1kg" />
               </Control>
             </Field>
@@ -122,11 +124,11 @@ export default class Estoque extends React.Component {
             <Field>
               <Label>Unidade de Medida</Label>
               <Control>
-                <Select>
-                  <option>Selecione</option>
-                  <option>g</option>
-                  <option>ml</option>
-                  <option>Unidade</option>
+                <Select defaultValue={this.state.productToEdit.unitOfMeasurement}>
+                  <option value="">Selecione</option>
+                  <option value="g">Grama</option>
+                  <option value="ml">Mililitro</option>
+                  <option value="unidade">Unidade</option>
                 </Select>
               </Control>
             </Field>
@@ -137,6 +139,7 @@ export default class Estoque extends React.Component {
                 <Input
                   type="text"
                   isColor="success"
+                  defaultValue={this.state.productToEdit.unitPrice}
                   placeholder="10,00" />
               </Control>
             </Field>
@@ -147,6 +150,7 @@ export default class Estoque extends React.Component {
                 <Input
                   type="text"
                   isColor="success"
+                  defaultValue={this.state.productToEdit.pricePerUnitOfMeasurement}
                   placeholder="10,00" />
               </Control>
             </Field>
@@ -157,6 +161,7 @@ export default class Estoque extends React.Component {
                 <Input
                   type="text"
                   isColor="success"
+                  defaultValue={this.state.productToEdit.quantity}
                   placeholder="10" />
               </Control>
             </Field>
@@ -167,6 +172,7 @@ export default class Estoque extends React.Component {
                 <Input
                   type="text"
                   isColor="success"
+                  defaultValue={this.state.productToEdit.sellingPoint}
                   placeholder="Supermercado Extra" />
               </Control>
             </Field>
