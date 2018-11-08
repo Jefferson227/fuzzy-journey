@@ -51,15 +51,24 @@ export default class Estoque extends React.Component {
   }
 
   addNewProductHandler() {
-    this.setState({ mode: 'add' });
+    this.setState({
+      mode: 'add',
+      productToEdit: {},
+    });
   }
 
   enableViewModeHandler() {
-    this.setState({ mode: 'view' });
+    this.setState({
+      mode: 'view',
+      productToEdit: {},
+    });
   }
 
-  enableEditModeHandler() {
-    this.setState({ mode: 'edit' });
+  enableEditModeHandler(product) {
+    this.setState({
+      mode: 'edit',
+      productToEdit: product,
+    });
   }
 
   render() {
@@ -79,7 +88,7 @@ export default class Estoque extends React.Component {
             </Field>
             { this.state.products.map((product, index) =>
               <Box
-                onClick={this.enableEditModeHandler}
+                onClick={() => this.enableEditModeHandler(product)}
                 key={index}>{ product.productName }</Box>) }
           </Container>
           <FloatingButton addNewProductHandler={this.addNewProductHandler} />
