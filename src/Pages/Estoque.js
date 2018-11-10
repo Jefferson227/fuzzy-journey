@@ -44,6 +44,7 @@ export default class Estoque extends React.Component {
     this.hideDecisionModal = this.hideDecisionModal.bind(this);
     this.showSuccessToast = this.showSuccessToast.bind(this);
     this.deleteProduct = this.deleteProduct.bind(this);
+    this.addProduct = this.addProduct.bind(this);
   }
 
   componentDidMount() {
@@ -109,6 +110,12 @@ export default class Estoque extends React.Component {
 
   deleteProduct() {
     this.showSuccessToast('Produto deletado com sucesso');
+    this.hideDecisionModal();
+    this.enableViewModeHandler();
+  }
+
+  addProduct() {
+    this.showSuccessToast('Produto adicionado com sucesso');
     this.hideDecisionModal();
     this.enableViewModeHandler();
   }
@@ -271,7 +278,7 @@ export default class Estoque extends React.Component {
                 <Button
                   isColor="info"
                   style={{ marginRight: 5 }}
-                  onClick={this.enableViewModeHandler}
+                  onClick={this.addProduct}
                 >{this.state.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
 
                 <Button
