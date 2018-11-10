@@ -13,6 +13,14 @@ import {
   Columns,
   Select,
   TextArea,
+  Modal,
+  ModalBackground,
+  ModalCard,
+  ModalCardHeader,
+  ModalCardTitle,
+  Delete,
+  ModalCardBody,
+  ModalCardFooter,
 } from 'bloomer';
 
 export default class Estoque extends React.Component {
@@ -29,6 +37,9 @@ export default class Estoque extends React.Component {
     this.enableViewModeHandler = this.enableViewModeHandler.bind(this);
     this.enableEditModeHandler = this.enableEditModeHandler.bind(this);
     this.displayDeleteButtonHandler = this.displayDeleteButtonHandler.bind(this);
+    this.renderDecisionModal = this.renderDecisionModal.bind(this);
+    this.showDecisionModal = this.showDecisionModal.bind(this);
+    this.hideDecisionModal = this.hideDecisionModal.bind(this);
   }
 
   componentDidMount() {
@@ -77,9 +88,44 @@ export default class Estoque extends React.Component {
     return displayButton ? (
       <Button
         isColor="danger"
+        onClick={this.showDecisionModal}
         style={{ marginRight: 5 }}
         isActive={this.state.mode === 'edit'}>Deletar</Button>
     ) : null;
+  }
+
+  showDecisionModal() {
+    this.setState({ isDecisionModalVisible: true });
+  }
+
+  hideDecisionModal() {
+    this.setState({ isDecisionModalVisible: false });
+  }
+
+  renderDecisionModal() {
+    return (
+      <Modal
+        style={{ paddingLeft: 10, paddingRight: 10 }}
+        isActive={this.state.isDecisionModalVisible}>
+        <ModalBackground />
+        <ModalCard>
+          <ModalCardHeader>
+            <ModalCardTitle>Deletar</ModalCardTitle>
+            <Delete onClick={this.hideDecisionModal} />
+          </ModalCardHeader>
+          <ModalCardBody>Deseja deletar esse produto?</ModalCardBody>
+          <ModalCardFooter>
+            <Button
+              isColor="danger"
+              onClick={this.hideDecisionModal}>Sim</Button>
+
+            <Button
+              isColor="warning"
+              onClick={this.hideDecisionModal}>Não</Button>
+          </ModalCardFooter>
+        </ModalCard>
+      </Modal>
+    );
   }
 
   render() {
@@ -212,6 +258,7 @@ export default class Estoque extends React.Component {
                 {this.displayDeleteButtonHandler(this.state.mode === 'edit')}
               </Column>
             </Columns>
+            {this.renderDecisionModal()}
           </Container>
         </div>
       );
