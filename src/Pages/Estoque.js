@@ -11,7 +11,8 @@ import {
   Button,
   Column,
   Columns,
-  Select
+  Select,
+  TextArea,
 } from 'bloomer';
 
 export default class Estoque extends React.Component {
@@ -174,6 +175,15 @@ export default class Estoque extends React.Component {
                   isColor="success"
                   defaultValue={this.state.productToEdit.sellingPoint}
                   placeholder="Supermercado Extra" />
+              </Control>
+            </Field>
+
+            <Field>
+              <Control>
+                <Label>Observações</Label>
+                <TextArea
+                  defaultValue={this.state.productToEdit.notes}
+                  placeholder="Digite suas anotações aqui" />
               </Control>
             </Field>
 

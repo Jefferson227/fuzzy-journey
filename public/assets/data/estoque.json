@@ -6,7 +6,8 @@
     "unitPrice": 5.00,
     "pricePerUnitOfMeasurement": 5.00,
     "quantity": 2,
-    "sellingPoint": "Fortali"
+    "sellingPoint": "Fortali",
+    "notes": "O açúcar continua doce"
   },
   {
     "productName": "Margarina Medalha de Ouro 3kg",
@@ -15,7 +16,8 @@
     "unitPrice": 22.26,
     "pricePerUnitOfMeasurement": 44.52,
     "quantity": 12,
-    "sellingPoint": "Fortali"
+    "sellingPoint": "Fortali",
+    "notes": "Estava mais barato no Atacadão por R$20,00"
   },
   {
     "productName": "Cerejas ao Marasquinho",
@@ -24,7 +26,8 @@
     "unitPrice": 24.21,
     "pricePerUnitOfMeasurement": 48.42,
     "quantity": 12,
-    "sellingPoint": "Fortali"
+    "sellingPoint": "Fortali",
+    "notes": ""
   },
   {
     "productName": "Chocolate ao Leite Melken",
@@ -33,7 +36,8 @@
     "unitPrice": 28.33,
     "pricePerUnitOfMeasurement": 26.98,
     "quantity": 12,
-    "sellingPoint": "Fortali"
+    "sellingPoint": "Fortali",
+    "notes": "Tinha, mas tava faltando"
   },
   {
     "productName": "Leite Integral",
@@ -42,7 +46,8 @@
     "unitPrice": 4.95,
     "pricePerUnitOfMeasurement": 4.95,
     "quantity": 12,
-    "sellingPoint": "Fortali"
+    "sellingPoint": "Fortali",
+    "notes": ""
   },
   {
     "productName": "Kit Kat",
@@ -51,6 +56,7 @@
     "unitPrice": 41.52,
     "pricePerUnitOfMeasurement": 1.73,
     "quantity": 12,
-    "sellingPoint": "Fortali"
+    "sellingPoint": "Fortali",
+    "notes": ""
   }
 ]
