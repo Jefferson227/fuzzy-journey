@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../Components/Header/Header';
 import FloatingButton from '../Components/FloatingButton/FloatingButton';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import {
   Field,
   Input,
@@ -40,6 +42,8 @@ export default class Estoque extends React.Component {
     this.renderDecisionModal = this.renderDecisionModal.bind(this);
     this.showDecisionModal = this.showDecisionModal.bind(this);
     this.hideDecisionModal = this.hideDecisionModal.bind(this);
+    this.showSuccessToast = this.showSuccessToast.bind(this);
+    this.deleteProduct = this.deleteProduct.bind(this);
   }
 
   componentDidMount() {
@@ -103,6 +107,12 @@ export default class Estoque extends React.Component {
     this.setState({ isDecisionModalVisible: false });
   }
 
+  deleteProduct() {
+    this.showSuccessToast('Produto deletado com sucesso');
+    this.hideDecisionModal();
+    this.enableViewModeHandler();
+  }
+
   renderDecisionModal() {
     return (
       <Modal
@@ -118,7 +128,7 @@ export default class Estoque extends React.Component {
           <ModalCardFooter>
             <Button
               isColor="danger"
-              onClick={this.hideDecisionModal}>Sim</Button>
+              onClick={this.deleteProduct}>Sim</Button>
 
             <Button
               isColor="warning"
@@ -127,6 +137,17 @@ export default class Estoque extends React.Component {
         </ModalCard>
       </Modal>
     );
+  }
+
+  showSuccessToast(message) {
+    toast.success(message, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true
+    });
   }
 
   render() {
@@ -150,6 +171,7 @@ export default class Estoque extends React.Component {
                 key={index}>{ product.productName }</Box>) }
           </Container>
           <FloatingButton addNewProductHandler={this.addNewProductHandler} />
+          <ToastContainer />
         </div>
       );
     } else {
@@ -259,7 +281,9 @@ export default class Estoque extends React.Component {
                 {this.displayDeleteButtonHandler(this.state.mode === 'edit')}
               </Column>
             </Columns>
+
             {this.renderDecisionModal()}
+
           </Container>
         </div>
       );
