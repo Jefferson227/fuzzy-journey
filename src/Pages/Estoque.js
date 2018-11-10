@@ -58,7 +58,8 @@ export default class Estoque extends React.Component {
       .then(res => res.json())
       .then(res => {
         const products = res;
-        const filteredProducts = products.filter(product => product.productName.toLowerCase().includes(filter));
+        const filteredProducts = products
+          .filter(product => product.productName.toLowerCase().includes(filter.toLowerCase()));
         this.setState({ products: filteredProducts });
       });
   }
