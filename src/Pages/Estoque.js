@@ -28,6 +28,7 @@ export default class Estoque extends React.Component {
     this.addNewProductHandler = this.addNewProductHandler.bind(this);
     this.enableViewModeHandler = this.enableViewModeHandler.bind(this);
     this.enableEditModeHandler = this.enableEditModeHandler.bind(this);
+    this.displayDeleteButtonHandler = this.displayDeleteButtonHandler.bind(this);
   }
 
   componentDidMount() {
@@ -70,6 +71,15 @@ export default class Estoque extends React.Component {
       mode: 'edit',
       productToEdit: product,
     });
+  }
+
+  displayDeleteButtonHandler(displayButton) {
+    return displayButton ? (
+      <Button
+        isColor="danger"
+        style={{ marginRight: 5 }}
+        isActive={this.state.mode === 'edit'}>Deletar</Button>
+    ) : null;
   }
 
   render() {
@@ -192,10 +202,14 @@ export default class Estoque extends React.Component {
                 <Button
                   isColor="info"
                   style={{ marginRight: 5 }}
-                  onClick={this.enableViewModeHandler}>{this.state.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
+                  onClick={this.enableViewModeHandler}
+                >{this.state.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
+
                 <Button
-                  isColor="warning"
-                  isActive={this.state.mode === 'add'}>Limpar</Button>
+                  style={{ marginRight: 5 }}
+                  isColor="warning">Limpar</Button>
+
+                {this.displayDeleteButtonHandler(this.state.mode === 'edit')}
               </Column>
             </Columns>
           </Container>
