@@ -31,7 +31,7 @@ export default class Estoque extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/assets/data/estoque.json')
+    fetch('/assets/data/estoque.json')
       .then(res => res.json())
       .then(res => {
         const products = res;
