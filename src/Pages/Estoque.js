@@ -54,7 +54,7 @@ export default class Estoque extends React.Component {
   searchProductHandler(event) {
     const filter = event.target.value;
 
-    fetch('http://localhost:3000/assets/data/estoque.json')
+    fetch('/assets/data/estoque.json')
       .then(res => res.json())
       .then(res => {
         const products = res;
