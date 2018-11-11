@@ -1,14 +1,13 @@
 import React from 'react';
 import Header from '../Components/Header/Header';
-import FloatingButton from '../Components/FloatingButton/FloatingButton';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import SearchProduct from '../Components/SearchProduct/SearchProduct';
 import {
   Field,
   Input,
   Control,
   Container,
-  Box,
   Label,
   Button,
   Column,
@@ -46,7 +45,6 @@ export default class Estoque extends React.Component {
     this.deleteProduct = this.deleteProduct.bind(this);
     this.addProduct = this.addProduct.bind(this);
     this.saveChanges = this.saveChanges.bind(this);
-    this.renderSearchComponent = this.renderSearchComponent.bind(this);
     this.renderAddEditComponent = this.renderAddEditComponent.bind(this);
   }
 
@@ -163,29 +161,6 @@ export default class Estoque extends React.Component {
       pauseOnHover: true,
       draggable: true
     });
-  }
-
-  renderSearchComponent() {
-    return (
-      <div>
-        <Field>
-          <Control>
-            <Input
-              type="text"
-              isColor="success"
-              placeholder="Digite o nome do produto"
-              onChange={this.searchProductHandler} />
-          </Control>
-        </Field>
-
-        {this.state.products.map((product, index) =>
-          <Box
-            onClick={() => this.enableEditModeHandler(product)}
-            key={index}>{ product.productName }</Box>)}
-
-        <FloatingButton addNewProductHandler={this.addNewProductHandler} />
-      </div>
-    );
   }
 
   renderAddEditComponent() {
@@ -306,7 +281,11 @@ export default class Estoque extends React.Component {
 
         <Container style={{ padding: 10 }}>
           {this.state.mode === 'view'
-            ? this.renderSearchComponent()
+            ? <SearchProduct
+                searchProductHandler={this.searchProductHandler}
+                products={this.state.products}
+                enableEditModeHandler={this.enableEditModeHandler}
+                addNewProductHandler={this.addNewProductHandler} />
             : this.renderAddEditComponent()}
         </Container>
         <ToastContainer />
