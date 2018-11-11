@@ -3,17 +3,10 @@ import Header from '../Components/Header/Header';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import SearchProduct from '../Components/SearchProduct/SearchProduct';
+import AddEditProduct from '../Components/AddEditProduct/AddEditProduct';
 import {
-  Field,
-  Input,
-  Control,
   Container,
-  Label,
   Button,
-  Column,
-  Columns,
-  Select,
-  TextArea,
   Modal,
   ModalBackground,
   ModalCard,
@@ -45,7 +38,6 @@ export default class Estoque extends React.Component {
     this.deleteProduct = this.deleteProduct.bind(this);
     this.addProduct = this.addProduct.bind(this);
     this.saveChanges = this.saveChanges.bind(this);
-    this.renderAddEditComponent = this.renderAddEditComponent.bind(this);
   }
 
   componentDidMount() {
@@ -163,117 +155,6 @@ export default class Estoque extends React.Component {
     });
   }
 
-  renderAddEditComponent() {
-    return (
-      <div>
-        <Field>
-          <Control>
-            <Label>Produto</Label>
-            <Input
-              type="text"
-              isColor="success"
-              defaultValue={this.state.productToEdit.productName}
-              placeholder="ex. Margarina Medalha de Ouro" />
-          </Control>
-        </Field>
-
-        <Field>
-          <Control>
-            <Label>Embalagem</Label>
-            <Input
-              type="text"
-              isColor="success"
-              defaultValue={this.state.productToEdit.packageContent}
-              placeholder="ex. 1kg" />
-          </Control>
-        </Field>
-
-        <Field>
-          <Label>Unidade de Medida</Label>
-          <Control>
-            <Select defaultValue={this.state.productToEdit.unitOfMeasurement}>
-              <option value="">Selecione</option>
-              <option value="g">Grama</option>
-              <option value="ml">Mililitro</option>
-              <option value="unidade">Unidade</option>
-            </Select>
-          </Control>
-        </Field>
-
-        <Field>
-          <Control>
-            <Label>Preço Unitário</Label>
-            <Input
-              type="text"
-              isColor="success"
-              defaultValue={this.state.productToEdit.unitPrice}
-              placeholder="10,00" />
-          </Control>
-        </Field>
-
-        <Field>
-          <Control>
-            <Label>Preço por Embalagem</Label>
-            <Input
-              type="text"
-              isColor="success"
-              defaultValue={this.state.productToEdit.pricePerUnitOfMeasurement}
-              placeholder="10,00" />
-          </Control>
-        </Field>
-
-        <Field>
-          <Control>
-            <Label>Quantidade</Label>
-            <Input
-              type="text"
-              isColor="success"
-              defaultValue={this.state.productToEdit.quantity}
-              placeholder="10" />
-          </Control>
-        </Field>
-
-        <Field>
-          <Control>
-            <Label>Local</Label>
-            <Input
-              type="text"
-              isColor="success"
-              defaultValue={this.state.productToEdit.sellingPoint}
-              placeholder="Supermercado Extra" />
-          </Control>
-        </Field>
-
-        <Field>
-          <Control>
-            <Label>Observações</Label>
-            <TextArea
-              defaultValue={this.state.productToEdit.notes}
-              placeholder="Digite suas anotações aqui" />
-          </Control>
-        </Field>
-
-        <Columns>
-          <Column hasTextAlign="centered">
-            <Button
-              isColor="info"
-              style={{ marginRight: 5 }}
-              onClick={this.state.mode === 'add' ? this.addProduct : this.saveChanges}
-            >{this.state.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
-
-            <Button
-              style={{ marginRight: 5 }}
-              isColor="warning">Limpar</Button>
-
-            {this.displayDeleteButtonHandler(this.state.mode === 'edit')}
-          </Column>
-        </Columns>
-
-        {this.renderDecisionModal()}
-      </div>
-    );
-  }
-
   render() {
     return (
       <div>
@@ -286,8 +167,15 @@ export default class Estoque extends React.Component {
                 products={this.state.products}
                 enableEditModeHandler={this.enableEditModeHandler}
                 addNewProductHandler={this.addNewProductHandler} />
-            : this.renderAddEditComponent()}
+            : <AddEditProduct
+               product={this.state.productToEdit}
+               mode={this.state.mode}
+               addProduct={this.addProduct}
+               saveChanges={this.saveChanges}
+               displayDeleteButtonHandler={this.displayDeleteButtonHandler}
+               renderDecisionModal={this.renderDecisionModal} />}
         </Container>
+
         <ToastContainer />
       </div>
     );
