@@ -1,4 +1,5 @@
 import React from 'react';
+import DecisionModal from '../Modals/DecisionModal/DecisionModal';
 import {
   Field,
   Control,
@@ -116,6 +117,12 @@ export default (props) => (
       </Column>
     </Columns>
 
-    {props.renderDecisionModal()}
+    <DecisionModal
+      isDecisionModalVisible={props.isDecisionModalVisible}
+      title={props.decisionModalTitle}
+      message={props.decisionModalMessage}
+      actionHideHandler={props.hideDecisionModal}
+      actionYesHandler={props.deleteProduct}
+      actionNoHandler={props.hideDecisionModal} />
   </div>
 );

@@ -4,18 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import SearchProduct from '../Components/SearchProduct/SearchProduct';
 import AddEditProduct from '../Components/AddEditProduct/AddEditProduct';
-import {
-  Container,
-  Button,
-  Modal,
-  ModalBackground,
-  ModalCard,
-  ModalCardHeader,
-  ModalCardTitle,
-  Delete,
-  ModalCardBody,
-  ModalCardFooter,
-} from 'bloomer';
+import { Container, Button } from 'bloomer';
 
 export default class Estoque extends React.Component {
   constructor(props){
@@ -31,7 +20,6 @@ export default class Estoque extends React.Component {
     this.enableViewModeHandler = this.enableViewModeHandler.bind(this);
     this.enableEditModeHandler = this.enableEditModeHandler.bind(this);
     this.displayDeleteButtonHandler = this.displayDeleteButtonHandler.bind(this);
-    this.renderDecisionModal = this.renderDecisionModal.bind(this);
     this.showDecisionModal = this.showDecisionModal.bind(this);
     this.hideDecisionModal = this.hideDecisionModal.bind(this);
     this.showSuccessToast = this.showSuccessToast.bind(this);
@@ -118,32 +106,6 @@ export default class Estoque extends React.Component {
     this.hideDecisionModal();
   }
 
-  renderDecisionModal() {
-    return (
-      <Modal
-        style={{ paddingLeft: 10, paddingRight: 10 }}
-        isActive={this.state.isDecisionModalVisible}>
-        <ModalBackground />
-        <ModalCard>
-          <ModalCardHeader>
-            <ModalCardTitle>Deletar</ModalCardTitle>
-            <Delete onClick={this.hideDecisionModal} />
-          </ModalCardHeader>
-          <ModalCardBody>Deseja deletar esse produto?</ModalCardBody>
-          <ModalCardFooter>
-            <Button
-              isColor="danger"
-              onClick={this.deleteProduct}>Sim</Button>
-
-            <Button
-              isColor="warning"
-              onClick={this.hideDecisionModal}>Não</Button>
-          </ModalCardFooter>
-        </ModalCard>
-      </Modal>
-    );
-  }
-
   showSuccessToast(message) {
     toast.success(message, {
       position: "top-center",
@@ -173,7 +135,12 @@ export default class Estoque extends React.Component {
                addProduct={this.addProduct}
                saveChanges={this.saveChanges}
                displayDeleteButtonHandler={this.displayDeleteButtonHandler}
-               renderDecisionModal={this.renderDecisionModal} />}
+               renderDecisionModal={this.renderDecisionModal}
+               isDecisionModalVisible={this.state.isDecisionModalVisible}
+               hideDecisionModal={this.hideDecisionModal}
+               deleteProduct={this.deleteProduct}
+               decisionModalTitle="Deletar produto"
+               decisionModalMessage="Deseja deletar este produto?" />}
         </Container>
 
         <ToastContainer />
