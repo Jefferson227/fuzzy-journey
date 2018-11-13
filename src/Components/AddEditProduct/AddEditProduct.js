@@ -12,6 +12,15 @@ import {
   Button,
 } from 'bloomer';
 
+const displayDeleteButtonHandler = (props) => (
+  props.mode === 'edit'
+    ? <Button
+        isColor="danger"
+        onClick={props.showDecisionModal}
+        style={{ marginRight: 5 }}>Deletar</Button>
+    : null
+);
+
 export default (props) => (
   <div>
     <Field>
@@ -113,7 +122,7 @@ export default (props) => (
           style={{ marginRight: 5 }}
           isColor="warning">Limpar</Button>
 
-        {props.displayDeleteButtonHandler(props.mode === 'edit')}
+        {displayDeleteButtonHandler(props)}
       </Column>
     </Columns>
 
@@ -121,6 +130,7 @@ export default (props) => (
       isDecisionModalVisible={props.isDecisionModalVisible}
       title={props.decisionModalTitle}
       message={props.decisionModalMessage}
+      actionShowModal={props.showDecisionModal}
       actionHideHandler={props.hideDecisionModal}
       actionYesHandler={props.deleteProduct}
       actionNoHandler={props.hideDecisionModal} />
