@@ -119,17 +119,17 @@ export default class Estoque extends React.Component {
                 enableEditModeHandler={this.enableEditModeHandler}
                 addNewProductHandler={this.addNewProductHandler} />
             : <AddEditProduct
-               product={this.state.productToEdit}
-               mode={this.state.mode}
-               addProduct={this.addProduct}
-               saveChanges={this.saveChanges}
-               renderDecisionModal={this.renderDecisionModal}
-               isDecisionModalVisible={this.state.isDecisionModalVisible}
-               showDecisionModal={this.showDecisionModal}
-               hideDecisionModal={this.hideDecisionModal}
-               deleteProduct={this.deleteProduct}
-               decisionModalTitle="Deletar produto"
-               decisionModalMessage="Deseja deletar este produto?" />}
+                product={this.state.productToEdit}
+                mode={this.state.mode}
+                addProduct={this.addProduct}
+                saveChanges={this.saveChanges}
+                renderDecisionModal={this.renderDecisionModal}
+                isDecisionModalVisible={this.state.isDecisionModalVisible}
+                showDecisionModal={this.showDecisionModal}
+                hideDecisionModal={this.hideDecisionModal}
+                deleteProduct={this.deleteProduct}
+                decisionModalTitle="Deletar produto"
+                decisionModalMessage="Deseja deletar este produto?" />}
         </Container>
 
         <ToastContainer />
