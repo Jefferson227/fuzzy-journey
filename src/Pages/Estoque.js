@@ -114,20 +114,9 @@ export default class Estoque extends React.Component {
         <Container style={{ padding: 10 }}>
           {this.state.mode === 'view'
             ? <SearchProduct
-                searchProductHandler={this.searchProductHandler}
-                products={this.state.products}
-                enableEditModeHandler={this.enableEditModeHandler}
-                addNewProductHandler={this.addNewProductHandler} />
+                {...this} />
             : <AddEditProduct
-                product={this.state.productToEdit}
-                mode={this.state.mode}
-                addProduct={this.addProduct}
-                saveChanges={this.saveChanges}
-                renderDecisionModal={this.renderDecisionModal}
-                isDecisionModalVisible={this.state.isDecisionModalVisible}
-                showDecisionModal={this.showDecisionModal}
-                hideDecisionModal={this.hideDecisionModal}
-                deleteProduct={this.deleteProduct}
+                {...this}
                 decisionModalTitle="Deletar produto"
                 decisionModalMessage="Deseja deletar este produto?" />}
         </Container>

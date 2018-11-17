@@ -14,7 +14,7 @@ export default (props) => (
       </Control>
     </Field>
 
-    {props.products.map((product, index) =>
+    {props.state.products.map((product, index) =>
       <Box
         onClick={() => props.enableEditModeHandler(product)}
         key={index}>{ product.productName }</Box>)}

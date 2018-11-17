@@ -13,7 +13,7 @@ import {
 } from 'bloomer';
 
 const displayDeleteButtonHandler = (props) => (
-  props.mode === 'edit'
+  props.state.mode === 'edit'
     ? <Button
         isColor="danger"
         onClick={props.showDecisionModal}
@@ -29,7 +29,7 @@ export default (props) => (
         <Input
           type="text"
           isColor="success"
-          defaultValue={props.product.productName}
+          defaultValue={props.state.productToEdit.productName}
           placeholder="ex. Margarina Medalha de Ouro" />
       </Control>
     </Field>
@@ -40,7 +40,7 @@ export default (props) => (
         <Input
           type="text"
           isColor="success"
-          defaultValue={props.product.packageContent}
+          defaultValue={props.state.productToEdit.packageContent}
           placeholder="ex. 1kg" />
       </Control>
     </Field>
@@ -48,7 +48,7 @@ export default (props) => (
     <Field>
       <Label>Unidade de Medida</Label>
       <Control>
-        <Select defaultValue={props.product.unitOfMeasurement}>
+        <Select defaultValue={props.state.productToEdit.unitOfMeasurement}>
           <option value="">Selecione</option>
           <option value="g">Grama</option>
           <option value="ml">Mililitro</option>
@@ -63,7 +63,7 @@ export default (props) => (
         <Input
           type="text"
           isColor="success"
-          defaultValue={props.product.unitPrice}
+          defaultValue={props.state.productToEdit.unitPrice}
           placeholder="10,00" />
       </Control>
     </Field>
@@ -74,7 +74,7 @@ export default (props) => (
         <Input
           type="text"
           isColor="success"
-          defaultValue={props.product.pricePerUnitOfMeasurement}
+          defaultValue={props.state.productToEdit.pricePerUnitOfMeasurement}
           placeholder="10,00" />
       </Control>
     </Field>
@@ -85,7 +85,7 @@ export default (props) => (
         <Input
           type="text"
           isColor="success"
-          defaultValue={props.product.quantity}
+          defaultValue={props.state.productToEdit.quantity}
           placeholder="10" />
       </Control>
     </Field>
@@ -96,7 +96,7 @@ export default (props) => (
         <Input
           type="text"
           isColor="success"
-          defaultValue={props.product.sellingPoint}
+          defaultValue={props.state.productToEdit.sellingPoint}
           placeholder="Supermercado Extra" />
       </Control>
     </Field>
@@ -105,7 +105,7 @@ export default (props) => (
       <Control>
         <Label>Observações</Label>
         <TextArea
-          defaultValue={props.product.notes}
+          defaultValue={props.state.productToEdit.notes}
           placeholder="Digite suas anotações aqui" />
       </Control>
     </Field>
@@ -115,8 +115,8 @@ export default (props) => (
         <Button
           isColor="info"
           style={{ marginRight: 5 }}
-          onClick={props.mode === 'add' ? props.addProduct : props.saveChanges}
-        >{props.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
+          onClick={props.state.mode === 'add' ? props.addProduct : props.saveChanges}
+        >{props.state.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
 
         <Button
           style={{ marginRight: 5 }}
@@ -127,7 +127,7 @@ export default (props) => (
     </Columns>
 
     <DecisionModal
-      isDecisionModalVisible={props.isDecisionModalVisible}
+      isDecisionModalVisible={props.state.isDecisionModalVisible}
       title={props.decisionModalTitle}
       message={props.decisionModalMessage}
       actionShowModal={props.showDecisionModal}
