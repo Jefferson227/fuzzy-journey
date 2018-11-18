@@ -1,5 +1,6 @@
 import React from 'react';
 import DecisionModal from '../Modals/DecisionModal/DecisionModal';
+import { toast } from 'react-toastify';
 import {
   Field,
   Control,
@@ -20,6 +21,34 @@ const displayDeleteButtonHandler = (props) => (
         style={{ marginRight: 5 }}>Deletar</Button>
     : null
 );
+
+const showSuccessToast = (message) => {
+  toast.success(message, {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true
+  });
+}
+
+const addProduct = (props) => {
+  showSuccessToast('Produto adicionado com sucesso');
+  props.hideDecisionModal();
+  props.enableViewModeHandler();
+}
+
+const deleteProduct = (props) => {
+  showSuccessToast('Produto deletado com sucesso');
+  props.hideDecisionModal();
+  props.enableViewModeHandler();
+}
+
+const saveChanges = (props) => {
+  showSuccessToast('Alterações salvas com sucesso');
+  props.hideDecisionModal();
+}
 
 export default (props) => (
   <div>
@@ -115,7 +144,7 @@ export default (props) => (
         <Button
           isColor="info"
           style={{ marginRight: 5 }}
-          onClick={props.state.mode === 'add' ? props.addProduct : props.saveChanges}
+          onClick={props.state.mode === 'add' ? () => addProduct(props) : () => saveChanges(props)}
         >{props.state.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
 
         <Button
@@ -132,7 +161,7 @@ export default (props) => (
       message={props.decisionModalMessage}
       actionShowModal={props.showDecisionModal}
       actionHideHandler={props.hideDecisionModal}
-      actionYesHandler={props.deleteProduct}
+      actionYesHandler={() => deleteProduct(props)}
       actionNoHandler={props.hideDecisionModal} />
   </div>
 );
