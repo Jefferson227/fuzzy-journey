@@ -34,6 +34,7 @@ export default class AddEditProduct extends React.Component {
     this.hideDecisionModal = this.hideDecisionModal.bind(this);
     this.checkIfFieldIsValid = this.checkIfFieldIsValid.bind(this);
     this.updateField = this.updateField.bind(this);
+    this.checkIfFormIsInvalid = this.checkIfFormIsInvalid.bind(this);
     this.enableViewModeHandler = props.enableViewModeHandler.bind(this);
   }
 
@@ -94,6 +95,12 @@ export default class AddEditProduct extends React.Component {
         [field]: newValue
       }
     });
+  }
+
+  checkIfFormIsInvalid() {
+    const requiredFields = ['productName', 'packageContent', 'unitOfMeasurement',
+                            'unitPrice', 'pricePerUnitOfMeasurement', 'quantity', 'sellingPoint'];
+    return requiredFields.some(field => this.state.product[field] === '');
   }
 
   render() {
@@ -200,6 +207,7 @@ export default class AddEditProduct extends React.Component {
             <Button
               isColor="info"
               style={{ marginRight: 5 }}
+              disabled={this.checkIfFormIsInvalid()}
               onClick={this.state.mode === 'add' ? this.addProduct : this.saveChanges}
             >{this.state.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
 
