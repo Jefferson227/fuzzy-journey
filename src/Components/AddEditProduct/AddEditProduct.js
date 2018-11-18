@@ -32,6 +32,8 @@ export default class AddEditProduct extends React.Component {
     this.showSuccessToast = this.showSuccessToast.bind(this);
     this.showDecisionModal = this.showDecisionModal.bind(this);
     this.hideDecisionModal = this.hideDecisionModal.bind(this);
+    this.checkIfFieldIsValid = this.checkIfFieldIsValid.bind(this);
+    this.updateField = this.updateField.bind(this);
     this.enableViewModeHandler = props.enableViewModeHandler.bind(this);
   }
 
@@ -80,6 +82,20 @@ export default class AddEditProduct extends React.Component {
     this.setState({ isDecisionModalVisible: false });
   }
 
+  checkIfFieldIsValid(field) {
+    return this.state.product[field].toString().length > 0;
+  }
+
+  updateField(event, field) {
+    const newValue = event.target.value;
+    this.setState({
+      product: {
+        ...this.state.product,
+        [field]: newValue
+      }
+    });
+  }
+
   render() {
     return (
       <div>
@@ -88,7 +104,8 @@ export default class AddEditProduct extends React.Component {
             <Label>Produto</Label>
             <Input
               type="text"
-              isColor="success"
+              isColor={this.checkIfFieldIsValid('productName') ? 'success' : 'danger'}
+              onChange={(event) => this.updateField(event, 'productName')}
               defaultValue={this.state.product.productName}
               placeholder="ex. Margarina Medalha de Ouro" />
           </Control>
@@ -99,7 +116,8 @@ export default class AddEditProduct extends React.Component {
             <Label>Embalagem</Label>
             <Input
               type="text"
-              isColor="success"
+              isColor={this.checkIfFieldIsValid('packageContent') ? 'success' : 'danger'}
+              onChange={(event) => this.updateField(event, 'packageContent')}
               defaultValue={this.state.product.packageContent}
               placeholder="ex. 1kg" />
           </Control>
@@ -108,7 +126,10 @@ export default class AddEditProduct extends React.Component {
         <Field>
           <Label>Unidade de Medida</Label>
           <Control>
-            <Select defaultValue={this.state.product.unitOfMeasurement}>
+            <Select
+              isColor={this.checkIfFieldIsValid('unitOfMeasurement') ? 'success' : 'danger'}
+              onChange={(event) => this.updateField(event, 'unitOfMeasurement')}
+              defaultValue={this.state.product.unitOfMeasurement}>
               <option value="">Selecione</option>
               <option value="g">Grama</option>
               <option value="ml">Mililitro</option>
@@ -122,7 +143,8 @@ export default class AddEditProduct extends React.Component {
             <Label>Preço Unitário</Label>
             <Input
               type="text"
-              isColor="success"
+              isColor={this.checkIfFieldIsValid('unitPrice') ? 'success' : 'danger'}
+              onChange={(event) => this.updateField(event, 'unitPrice')}
               defaultValue={this.state.product.unitPrice}
               placeholder="10,00" />
           </Control>
@@ -133,7 +155,8 @@ export default class AddEditProduct extends React.Component {
             <Label>Preço por Embalagem</Label>
             <Input
               type="text"
-              isColor="success"
+              isColor={this.checkIfFieldIsValid('pricePerUnitOfMeasurement') ? 'success' : 'danger'}
+              onChange={(event) => this.updateField(event, 'pricePerUnitOfMeasurement')}
               defaultValue={this.state.product.pricePerUnitOfMeasurement}
               placeholder="10,00" />
           </Control>
@@ -144,7 +167,8 @@ export default class AddEditProduct extends React.Component {
             <Label>Quantidade</Label>
             <Input
               type="text"
-              isColor="success"
+              isColor={this.checkIfFieldIsValid('quantity') ? 'success' : 'danger'}
+              onChange={(event) => this.updateField(event, 'quantity')}
               defaultValue={this.state.product.quantity}
               placeholder="10" />
           </Control>
@@ -155,7 +179,8 @@ export default class AddEditProduct extends React.Component {
             <Label>Local</Label>
             <Input
               type="text"
-              isColor="success"
+              isColor={this.checkIfFieldIsValid('sellingPoint') ? 'success' : 'danger'}
+              onChange={(event) => this.updateField(event, 'sellingPoint')}
               defaultValue={this.state.product.sellingPoint}
               placeholder="Supermercado Extra" />
           </Control>
