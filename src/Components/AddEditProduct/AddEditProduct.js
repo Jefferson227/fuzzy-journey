@@ -13,155 +13,188 @@ import {
   Button,
 } from 'bloomer';
 
-const displayDeleteButtonHandler = (props) => (
-  props.state.mode === 'edit'
-    ? <Button
-        isColor="danger"
-        onClick={props.showDecisionModal}
-        style={{ marginRight: 5 }}>Deletar</Button>
-    : null
-);
 
-const showSuccessToast = (message) => {
-  toast.success(message, {
-    position: "top-center",
-    autoClose: 3000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true
-  });
-}
+export default class AddEditProduct extends React.Component {
+  constructor(props) {
+    super(props);
 
-const addProduct = (props) => {
-  showSuccessToast('Produto adicionado com sucesso');
-  props.hideDecisionModal();
-  props.enableViewModeHandler();
-}
+    this.state = {
+      product: props.state.productToEdit,
+      mode: props.state.mode,
+      isDecisionModalVisible: false,
+      decisionModalTitle: props.decisionModalTitle,
+      decisionModalMessage: props.decisionModalMessage,
+    };
 
-const deleteProduct = (props) => {
-  showSuccessToast('Produto deletado com sucesso');
-  props.hideDecisionModal();
-  props.enableViewModeHandler();
-}
+    this.addProduct = this.addProduct.bind(this);
+    this.saveChanges = this.saveChanges.bind(this);
+    this.deleteProduct = this.deleteProduct.bind(this);
+    this.showSuccessToast = this.showSuccessToast.bind(this);
+    this.showDecisionModal = this.showDecisionModal.bind(this);
+    this.hideDecisionModal = this.hideDecisionModal.bind(this);
+    this.enableViewModeHandler = props.enableViewModeHandler.bind(this);
+  }
 
-const saveChanges = (props) => {
-  showSuccessToast('Alterações salvas com sucesso');
-  props.hideDecisionModal();
-}
+  displayDeleteButtonHandler() {
+    return this.state.mode === 'edit'
+      ? <Button
+          isColor="danger"
+          onClick={this.showDecisionModal}
+          style={{ marginRight: 5 }}>Deletar</Button>
+      : null
+  }
 
-export default (props) => (
-  <div>
-    <Field>
-      <Control>
-        <Label>Produto</Label>
-        <Input
-          type="text"
-          isColor="success"
-          defaultValue={props.state.productToEdit.productName}
-          placeholder="ex. Margarina Medalha de Ouro" />
-      </Control>
-    </Field>
+  showSuccessToast(message) {
+    toast.success(message, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true
+    });
+  }
 
-    <Field>
-      <Control>
-        <Label>Embalagem</Label>
-        <Input
-          type="text"
-          isColor="success"
-          defaultValue={props.state.productToEdit.packageContent}
-          placeholder="ex. 1kg" />
-      </Control>
-    </Field>
+  addProduct() {
+    this.showSuccessToast('Produto adicionado com sucesso');
+    this.hideDecisionModal();
+    this.enableViewModeHandler();
+  }
 
-    <Field>
-      <Label>Unidade de Medida</Label>
-      <Control>
-        <Select defaultValue={props.state.productToEdit.unitOfMeasurement}>
-          <option value="">Selecione</option>
-          <option value="g">Grama</option>
-          <option value="ml">Mililitro</option>
-          <option value="unidade">Unidade</option>
-        </Select>
-      </Control>
-    </Field>
+  deleteProduct() {
+    this.showSuccessToast('Produto deletado com sucesso');
+    this.hideDecisionModal();
+    this.enableViewModeHandler();
+  }
 
-    <Field>
-      <Control>
-        <Label>Preço Unitário</Label>
-        <Input
-          type="text"
-          isColor="success"
-          defaultValue={props.state.productToEdit.unitPrice}
-          placeholder="10,00" />
-      </Control>
-    </Field>
+  saveChanges() {
+    this.showSuccessToast('Alterações salvas com sucesso');
+    this.hideDecisionModal();
+  }
 
-    <Field>
-      <Control>
-        <Label>Preço por Embalagem</Label>
-        <Input
-          type="text"
-          isColor="success"
-          defaultValue={props.state.productToEdit.pricePerUnitOfMeasurement}
-          placeholder="10,00" />
-      </Control>
-    </Field>
+  showDecisionModal() {
+    this.setState({ isDecisionModalVisible: true });
+  }
 
-    <Field>
-      <Control>
-        <Label>Quantidade</Label>
-        <Input
-          type="text"
-          isColor="success"
-          defaultValue={props.state.productToEdit.quantity}
-          placeholder="10" />
-      </Control>
-    </Field>
+  hideDecisionModal() {
+    this.setState({ isDecisionModalVisible: false });
+  }
 
-    <Field>
-      <Control>
-        <Label>Local</Label>
-        <Input
-          type="text"
-          isColor="success"
-          defaultValue={props.state.productToEdit.sellingPoint}
-          placeholder="Supermercado Extra" />
-      </Control>
-    </Field>
+  render() {
+    return (
+      <div>
+        <Field>
+          <Control>
+            <Label>Produto</Label>
+            <Input
+              type="text"
+              isColor="success"
+              defaultValue={this.state.product.productName}
+              placeholder="ex. Margarina Medalha de Ouro" />
+          </Control>
+        </Field>
 
-    <Field>
-      <Control>
-        <Label>Observações</Label>
-        <TextArea
-          defaultValue={props.state.productToEdit.notes}
-          placeholder="Digite suas anotações aqui" />
-      </Control>
-    </Field>
+        <Field>
+          <Control>
+            <Label>Embalagem</Label>
+            <Input
+              type="text"
+              isColor="success"
+              defaultValue={this.state.product.packageContent}
+              placeholder="ex. 1kg" />
+          </Control>
+        </Field>
 
-    <Columns>
-      <Column hasTextAlign="centered">
-        <Button
-          isColor="info"
-          style={{ marginRight: 5 }}
-          onClick={props.state.mode === 'add' ? () => addProduct(props) : () => saveChanges(props)}
-        >{props.state.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
+        <Field>
+          <Label>Unidade de Medida</Label>
+          <Control>
+            <Select defaultValue={this.state.product.unitOfMeasurement}>
+              <option value="">Selecione</option>
+              <option value="g">Grama</option>
+              <option value="ml">Mililitro</option>
+              <option value="unidade">Unidade</option>
+            </Select>
+          </Control>
+        </Field>
 
-        <Button
-          style={{ marginRight: 5 }}
-          isColor="warning">Limpar</Button>
+        <Field>
+          <Control>
+            <Label>Preço Unitário</Label>
+            <Input
+              type="text"
+              isColor="success"
+              defaultValue={this.state.product.unitPrice}
+              placeholder="10,00" />
+          </Control>
+        </Field>
 
-        {displayDeleteButtonHandler(props)}
-      </Column>
-    </Columns>
+        <Field>
+          <Control>
+            <Label>Preço por Embalagem</Label>
+            <Input
+              type="text"
+              isColor="success"
+              defaultValue={this.state.product.pricePerUnitOfMeasurement}
+              placeholder="10,00" />
+          </Control>
+        </Field>
 
-    <DecisionModal
-      isDecisionModalVisible={props.state.isDecisionModalVisible}
-      title={props.decisionModalTitle}
-      message={props.decisionModalMessage}
-      actionShowModal={props.showDecisionModal}
-      actionHideHandler={props.hideDecisionModal}
-      actionYesHandler={() => deleteProduct(props)}
-      actionNoHandler={props.hideDecisionModal} />
-  </div>
-);
+        <Field>
+          <Control>
+            <Label>Quantidade</Label>
+            <Input
+              type="text"
+              isColor="success"
+              defaultValue={this.state.product.quantity}
+              placeholder="10" />
+          </Control>
+        </Field>
+
+        <Field>
+          <Control>
+            <Label>Local</Label>
+            <Input
+              type="text"
+              isColor="success"
+              defaultValue={this.state.product.sellingPoint}
+              placeholder="Supermercado Extra" />
+          </Control>
+        </Field>
+
+        <Field>
+          <Control>
+            <Label>Observações</Label>
+            <TextArea
+              defaultValue={this.state.product.notes}
+              placeholder="Digite suas anotações aqui" />
+          </Control>
+        </Field>
+
+        <Columns>
+          <Column hasTextAlign="centered">
+            <Button
+              isColor="info"
+              style={{ marginRight: 5 }}
+              onClick={this.state.mode === 'add' ? this.addProduct : this.saveChanges}
+            >{this.state.mode === 'add' ? 'Adicionar' : 'Salvar'}</Button>
+
+            <Button
+              style={{ marginRight: 5 }}
+              isColor="warning">Limpar</Button>
+
+            {this.displayDeleteButtonHandler()}
+          </Column>
+        </Columns>
+
+        <DecisionModal
+          isDecisionModalVisible={this.state.isDecisionModalVisible}
+          title={this.state.decisionModalTitle}
+          message={this.state.decisionModalMessage}
+          actionShowModal={this.showDecisionModal}
+          actionHideHandler={this.hideDecisionModal}
+          actionYesHandler={this.deleteProduct}
+          actionNoHandler={this.hideDecisionModal} />
+      </div>
+    );
+  }
+};
