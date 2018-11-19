@@ -101,7 +101,7 @@ export default class AddEditProduct extends React.Component {
   checkIfFormIsInvalid() {
     const requiredFields = ['productName', 'packageContent', 'unitOfMeasurement',
                             'unitPrice', 'pricePerUnitOfMeasurement', 'quantity', 'sellingPoint'];
-    return requiredFields.some(field => this.state.product[field] === '');
+    return requiredFields.some(field => !this.state.product[field]);
   }
 
   render() {
