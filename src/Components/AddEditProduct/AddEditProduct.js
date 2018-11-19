@@ -84,6 +84,7 @@ export default class AddEditProduct extends React.Component {
   }
 
   checkIfFieldIsValid(field) {
+    if (!this.state.product[field]) return false;
     return this.state.product[field].toString().length > 0;
   }
 
