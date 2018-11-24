@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../Components/Header/Header';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import SearchProduct from '../Components/SearchProduct/SearchProduct';
@@ -77,8 +76,6 @@ export default class Estoque extends React.Component {
   render() {
     return (
       <div>
-        <Header />
-
         <Container style={{ padding: 10 }}>
           {this.state.mode === 'view'
             ? <SearchProduct
